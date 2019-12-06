@@ -11,11 +11,9 @@ using namespace std;
 int main()
 {
 	typedef vector<string> svector;
-
 	svector a{"first", "second", "third", "fourth", "fifth", "sixth", "last"};
 
 	auto end = ++(a.rbegin());
-
 	for(auto i = a.begin(); i != a.end(); ++i)
 	{
 		cout << *i << flush;
