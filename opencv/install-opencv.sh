@@ -1,10 +1,6 @@
 cd;
 sudo apt update
-sudo apt-get install cmake libeigen3-dev libgtk-3-dev qt5-default freeglut3-dev
-libvtk6-qt-dev libtbb-dev ffmpeg libdc1394-22-dev libavcodec-dev libavformat-dev
-libswscale-dev libjpeg-dev libpng++-dev libtiff5-dev
-libopenexr-dev libwebp-dev libhdf5-dev
-libopenblas-dev liblapacke-dev
+sudo apt-get install cmake libeigen3-dev libgtk-3-dev qt5-default freeglut3-dev libvtk6-qt-dev libtbb-dev ffmpeg libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libjpeg-dev libpng++-dev libtiff5-dev libopenexr-dev libwebp-dev libhdf5-dev libopenblas-dev liblapacke-dev
 mkdir -p opencv && cd opencv
 wget https://github.com/opencv/opencv/archive/4.2.0.zip
 unzip 4.2.0.zip
