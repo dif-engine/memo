@@ -43,13 +43,13 @@ KEY_WAIT_MSEC = 1300; --単位はミリセカンド．
 
 function GtoKeys(arg)
     local g = {};
-    g[1] = "t";  g[2] = "b";  g[3] = "c";  g[4] = "d";  g[5] = "e";  g[6] = "g";  g[7] = "g";
+    g[1] = "t";  g[2] = "b";  g[3] = "c";  g[4] = "d";  g[5] = "e";  g[6] = "g";  g[7] = "lshift";
     g[8] = "w";  g[9] = "i";  g[10] = "j"; g[11] = "k"; g[12] = "l"; g[13] = "m"; g[14] = "n";
       g[15] = "h";            g[16] = "rbracket"; g[17] = "backslash"; g[18] = "r"; g[19] = "s";
                          g[20] = "q";     g[21] = "q";  g[22] = "v";
-                                                                   g[23] = "spacebar";                               g[26] = {"lalt", "v", "i"};
-                                                                   g[24] = {"a"};      g[29] = {"lalt", "v", "i"};   g[25] = {"lshift", "home"};  g[27] = {"lalt", "v", "o"};
-                                                                                                                     g[28] = {"lalt", "v", "o"};
+                                                                   g[23] = "spacebar";                                                g[26] = {"lalt", "v", "i"};
+                                                                   g[24] = {"lshift", "spacebar"};      g[29] = {"lalt", "v", "i"};   g[25] = {"lshift", "home"};  g[27] = {"lalt", "v", "o"};
+                                                                                                                                      g[28] = {"lalt", "v", "o"};
     return g[arg];
 end
 
