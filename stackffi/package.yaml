@@ -1,0 +1,43 @@
+name:                stackffi
+version:             0.1.0.0
+github:              "githubuser/stackffi"
+license:             BSD3
+author:              "dif_engine"
+maintainer:          "differential.engine@gmail.com"
+copyright:           "2020 differential engine"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+description:         Please see the README on GitHub at <https://github.com/githubuser/stackffi#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  stackffi-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -pgmlg++ ##追加した
+    dependencies:
+    - stackffi
+    c-sources: src/foo.cc ##追加した
+
+tests:
+  stackffi-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - stackffi
