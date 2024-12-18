@@ -1,0 +1,25 @@
+% sample document for XeLaTeX, with Russian Language.
+
+\documentclass[12pt]{article}
+\usepackage{ucharclasses}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{polyglossia}
+\usepackage{fontspec}
+\usepackage{xltxtra} 
+\usepackage{xunicode}
+
+% "---" should be emdash
+\defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
+\setdefaultlanguage{russian}
+\newfontfamily\cyrillicfont{FreeSerif}
+
+\begin{document}
+
+Одиако при $\alpha \sim 0 \quad f(\alpha, y)$ --- уже нестапдартная функция и эквивалеитность (1) гі ней не применима. 
+Этот пример наводит на мысль о необходимости введения бесконечно малых \textit{существенно более высокого порядка, чем даниое} $\alpha$, т. е. таких, ноторые остаются бесконечшо малыми, даже если считать $\alpha$ конечным. 
+Такая мысыь высказана в 70-е годы А. Г. Драгалиным на семинарах в Московском государственном уииверситете. 
+
+\end{document}
