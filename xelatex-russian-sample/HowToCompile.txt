@@ -1,3 +1,35 @@
-How To Compile This Sample
+# How To Compile This Sample
 
+To compile, just:
 $ xelatex russian-sample.tex
+
+In russian-sample.tex, we refer FreeSerif.
+So, you may need to install:
+
+$ sudo apt-get install fonts-freefont-ttf
+
+If you are new to XeLaTeX, probably you will encounter some errors like this:
+(fontspec)                The font "FreeSerif" cannot be found; this may be
+(fontspec)                but usually is not a fontspec bug. Either there is
+(fontspec)                a typo in the font name/file, the font is not
+(fontspec)                installed (correctly), or there is a bug in the
+(fontspec)                underlying font loading engine (XeTeX/luaotfload).
+
+To relove this error, you need the following (1), (2) and (3):
+
+(1) Check TEXMFSYSVAR, by $ kpsewhich -var-value=TEXMFSYSVAR
+
+This woud show some thing like:
+/usr/local/texlive/2024/texmf-var
+
+(2) Copy the TEXMFSYSVAR/fonts/conf/texlive-fontconfig.conf to appropriate place.
+
+For example:
+$ sudo cp /usr/local/texlive/2024/texmf-var/fonts/conf/texlive-fontconfig.conf  /etc/fonts/conf.d/09-texlive.conf
+
+(3) Run: $ sudo fc-cache -fsv
+
+
+
+
+
