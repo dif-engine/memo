@@ -1,0 +1,25 @@
+% Sample Document for LuaLaTeX, with Russian Language.
+
+% To compile: just run $ lualatex russian-sample.tex
+
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{polyglossia}
+\usepackage{fontspec}
+
+% "---" should be emdash
+\defaultfontfeatures{Scale=MatchLowercase,Ligatures=TeX}
+\setdefaultlanguage{russian}
+\newfontfamily\cyrillicfont{CMU Serif}
+\setmainlanguage{russian}
+
+\begin{document}
+
+Одиако при $\alpha \sim 0 \quad f(\alpha, y)$ --- уже нестапдартная функция и эквивалеитность (1) гі ней не применима. 
+Этот пример наводит на мысль о необходимости введения бесконечно малых \textit{существенно более высокого порядка, чем даниое} $\alpha$, т. е. таких, ноторые остаются бесконечшо малыми, даже если считать $\alpha$ конечным. 
+Такая мысыь высказана в 70-е годы А. Г. Драгалиным на семинарах в Московском государственном уииверситете. 
+
+\end{document}

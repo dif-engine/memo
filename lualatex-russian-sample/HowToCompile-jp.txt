@@ -1,0 +1,4 @@
+# サンプルのコンパイル法
+
+単に次のようにすればよい:
+$ xelatex russian-sample.tex

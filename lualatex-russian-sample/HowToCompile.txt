@@ -1,0 +1,10 @@
+# How To Compile This Sample
+
+To compile, just:
+$ lualatex russian-sample.tex
+
+
+
+
+
+
