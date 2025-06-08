@@ -1,0 +1,553 @@
+\usepackage{comment}
+\usepackage{epigraph}
+\usepackage{makeidx}
+
+\usepackage{geometry} % to change the page dimensions
+%\usepackage[top=25truemm,bottom=50truemm]{geometry}
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage[svgnames]{xcolor}% tikzより前に読み込む必要あり
+\usepackage{tikz}
+\usepackage[most,listings]{tcolorbox} % for newtcbox
+\usepackage{latexsym}
+\usepackage{amsthm}
+\usepackage{lipsum}
+\usepackage{mathrsfs}
+\usepackage{mathtools, nccmath}
+\usepackage{xparse}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\usepackage{tablefootnote}
+\usepackage{textgreek}
+\usepackage{url}
+\usepackage{stackengine}
+\usepackage{graphicx}
+\usepackage{manfnt} %「曲がり道注意」フォント
+\usepackage{relsize} %for large math
+\usepackage{calc} %長さの計算のため
+\usepackage{romannum} %for roman numbers \romannum{1}, \Romannum{1}, for example
+\usepackage{tabularx}
+\usepackage{thmtools}
+\usepackage{minitoc}
+\usepackage{mindflow}
+\usepackage{etoolbox}
+
+\usetikzlibrary{patterns, intersections, calc}
+
+\AtBeginDocument{\pagenumbering{arabic}} %ページ番号がローマ数字になるのを抑制する．
+
+
+%===============================================
+%　カッコ関係
+%===============================================
+
+\NewDocumentCommand{\paren}{s m}{%
+  \IfBooleanTF{#1}{%
+    \mathopen{} (#2)\mathclose{}%
+  }%
+  {%
+    \mathopen{}\left(#2 \right)\mathclose{}%
+  }%
+}
+
+\NewDocumentCommand{\sqbracepair}{s m}{%
+  \IfBooleanTF{#1}{%
+    \mathopen{} [#2]\mathclose{}%
+  }%
+  {%
+    \mathopen{}\left[#2 \right]\mathclose{}%
+  }%
+}
+
+\NewDocumentCommand{\anglepair}{s m}{%
+  \IfBooleanTF{#1}{%
+    \mathopen{} \langle #2\rangle\mathclose{}%
+  }%
+  {%
+    \mathopen{}\left\langle #2 \right\rangle\mathclose{}%
+  }%
+}
+
+\NewDocumentCommand{\apply}{s m m}{%
+  \IfBooleanTF{#1}{%
+    #2\paren*{#3}%
+  }%
+  {%
+    #2\paren{#3}
+  }%
+}
+
+\NewDocumentCommand{\mybrace}{s m}{%
+  \IfBooleanTF{#1}{%
+    \mathopen{} \{#2\}\mathclose{}%
+  }%
+  {%
+    \mathopen{}\left\lbrace{#2} \right\rbrace\mathclose{}%
+  }%
+}
+
+\NewDocumentCommand{\bigparen}{m}{%
+  \mathopen{}\bigl(#1 \bigr)\mathclose{}%
+}
+
+\NewDocumentCommand{\Bigparen}{m}{%
+  \mathopen{}\Bigl(#1 \Bigr)\mathclose{}%
+}
+
+\NewDocumentCommand{\biggparen}{m}{%
+  \mathopen{}\biggl(#1 \biggr)\mathclose{}%
+}
+
+\NewDocumentCommand{\Biggparen}{m}{%
+  \mathopen{}\Biggl(#1 \Biggr)\mathclose{}%
+}
+
+\NewDocumentCommand{\offsetFromleft}{m m}{%
+  {#2}\blacktriangleright{#1}
+}
+
+\NewDocumentCommand{\offsetFromRight}{m m}{%
+  {#1}\blacktriangleleft{#2}
+}
+
+%===============================================
+%　集合論に関連した記法
+%===============================================
+\RenewDocumentCommand{\set}{m m}{\left\lbrace{#1}\:\,\vrule\:\,{#2}\right\rbrace}
+\NewDocumentCommand{\powerset}{m}{\mathcal{P}\mathopen{}\left({#1}\right)\mathclose{}}
+\NewDocumentCommand{\pair}{m m}{\left\langle{#1},\,{#2}\right\rangle}
+\NewDocumentCommand{\triple}{m m m}{\left\langle{#1},\,{#2},\,{#3}\right\rangle}
+\NewDocumentCommand{\quadruple}{m m m m}{\left\langle{#1},\,{#2},\,{#3},\,{#4}\right\rangle}
+
+\NewDocumentCommand{\singleton}{m}{\left\lbrace{#1} \right\rbrace}
+\NewDocumentCommand{\upair}{m m}{\left\lbrace{#1},\,{#2}\right\rbrace}
+\NewDocumentCommand{\extensionalSetNotation}{m}{\left\lbrace{#1} \right\rbrace}
+
+\NewDocumentCommand{\isomorphism}{}{\xrightarrow[\text{onto}]{\text{1--1}}}
+\NewDocumentCommand{\ontomap}{}{\xrightarrow{\text{onto}}}
+\NewDocumentCommand{\monomap}{}{\xrightarrow{\text{1--1}}}
+
+%===============================================
+%　良く議論で使うものたち
+%===============================================
+\NewDocumentCommand{\bendwarning}{}{\raisebox{1.5ex}{\dbend}}%「曲道注意」を入れる．
+\NewDocumentCommand{\Complex}{}{\mathbb{C}}
+\NewDocumentCommand{\Real}{}{\mathbb{R}}
+\NewDocumentCommand{\Rational}{}{\mathbb{Q}}
+\NewDocumentCommand{\Integer}{}{\mathbb{Z}}
+\NewDocumentCommand{\Nat}{}{\mathbb{N}}
+\NewDocumentCommand{\True}{}{\top}
+\NewDocumentCommand{\False}{}{\bot}
+\NewDocumentCommand{\iffdef}{}{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily def}}}{\longleftrightarrow}}}
+\NewDocumentCommand{\lequiv}{}{\enskip\longleftrightarrow\enskip}
+
+%===============================================
+%　数式番号の左右の変更
+%===============================================
+\makeatletter
+\newcommand{\leqnomode}{\tagsleft@true}
+\newcommand{\reqnomode}{\tagsleft@false}
+\makeatother
+
+
+%===============================================
+%　各種カウンタの設定
+%===============================================
+
+%定理カウンタ
+\newcounter{mycounter} % カウンタの宣言
+\setcounter{mycounter}{0} % カウンタの初期化
+\newcommand{\useMycounter}[1][]{\refstepcounter{mycounter}{#1}{\themycounter}\:}
+
+%定義カウンタ
+\newcounter{defcounter}
+\setcounter{defcounter}{0}
+\newcommand{\useDefcounter}[1][]{\refstepcounter{defcounter}{#1}{\thedefcounter}\:}
+
+
+%===============================================
+%　枠付きボックスのレンダリング
+%===============================================
+\setlength\fboxsep{7pt}
+\setlength\fboxrule{0.7pt}
+
+\newtcbox{\framedtext}{
+    on line, 
+    arc=2.1pt,
+    enhanced jigsaw,
+    opacityback = 0,
+    colframe = black,
+    %before upper={\rule[-3pt]{0pt}{10pt}},
+    before = {},
+    after = {},
+    boxrule=1pt,
+    boxsep=1.3pt,
+    left=4pt,
+    right=4pt,
+    top=2pt,
+    bottom=0.5pt
+}
+
+%===============================================
+%　脚注番号をアラビア数字に
+%===============================================
+\makeatletter
+\renewcommand*{\thefootnote}{%
+  \arabic{footnote}%
+}
+\makeatother
+
+%===============================================
+%　mdframed環境の中でも脚注が正常に使えるようにする
+%===============================================
+\makeatletter
+\AfterEndEnvironment{mdframed}{%
+ \tfn@tablefootnoteprintout%
+ \gdef\tfn@fnt{0}%
+}%
+\makeatother
+
+%===============================================
+%　エピグラフの長さの調整
+%===============================================
+\setlength{\epigraphwidth}{1.2\linewidth}
+
+%===============================================
+%　証明環境のカスタマイズ（１）
+%===============================================
+\makeatletter
+\AtBeginDocument{%
+  \renewcommand\proofname{\textbf{証明}}% 証明ラベルを太字に
+  \let\oldproof\proof % 元のproof環境を保存
+  \renewcommand{\proof}[1][\proofname]{% proof環境を再定義
+    \par
+    \pushQED{\qed}%
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist
+    \item[\hskip\labelsep
+          \textbf{#1}]% カスタムタイトルも太字に
+    \ignorespaces
+  }
+}
+\makeatother
+
+%===============================================
+%　証明環境のカスタマイズ（２）
+%===============================================
+\makeatletter%
+\let\@addpunct\@gobble%
+\makeatother%
+% ↑この設定によって「証明」の後の「.」が落ちる。
+
+%===============================================
+%　mdframed 環境のデフォルト値の設定
+%===============================================
+\mdfsetup{%
+   middlelinewidth=0.9pt,
+   roundcorner=4.3pt,
+   innertopmargin=7pt,
+   innerbottommargin=7pt, 
+   skipabove=9pt, 
+   skipbelow=9pt,
+}
+
+%%% 定理環境
+\declaretheoremstyle[
+    headfont=\normalfont\bfseries, 
+    notefont=\normalfont\bfseries,
+    bodyfont=\normalfont, %not italic
+    headpunct={},
+    postheadspace=8pt,
+    spaceabove=\itemsep,
+    spacebelow=\itemsep,
+    mdframed={}
+]{framedstyle}
+
+\declaretheoremstyle[
+    headfont=\normalfont\bfseries, 
+    notefont=\normalfont\bfseries,
+    bodyfont=\normalfont, %not italic
+    headpunct={},
+    postheadspace=8pt,
+    spaceabove=\itemsep,
+    spacebelow=\itemsep,
+    mdframed={
+    middlelinewidth=2.7pt,
+    middlelinecolor=red!70!black,
+   },
+]{redframestyle}
+
+%===============================================
+%　環境開始直後かどうかを判定するフラグの導入
+%===============================================
+\newif\ifAtThmEnvStart
+\AtThmEnvStartfalse % デフォルトではフラグをfalseに
+
+%%========================
+%% 定義
+%%========================
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  name={定義}
+]{definition}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{definition}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%========================
+%% 定理
+%%========================
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  name={定理}
+]{theorem}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{theorem}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%========================
+%% 命題
+%%========================
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  sibling=theorem,
+  name={命題}
+]{prop}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{prop}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%========================
+%% 補題
+%%========================
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  sibling=theorem,
+  name={補題}
+]{lemma}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{lemma}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%========================
+%% 系
+%%========================
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  sibling=theorem,
+  name={系}
+]{corollary}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{corollary}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%========================
+%% 記法
+%%========================
+\declaretheorem[
+  numbered=no,
+  style=framedstyle,
+  name={記法}
+]{notation}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{notation}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%========================
+%% ノート
+%%========================
+\declaretheorem[
+  numbered=no,
+  style=framedstyle,
+  name={ノート}
+]{note}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{note}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%========================
+%% 注意
+%%========================
+\declaretheorem[
+  numbered=no,
+  style=framedstyle,
+  name={注意}
+]{caution}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{caution}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%========================
+%% 例
+%%========================
+%\mdfsetup{backgroundcolor=orange!20}
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  name={例}
+]{example}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{example}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%========================
+%% （ただの枠）
+%%========================
+\declaretheorem[
+  numbered=no,
+  style=framedstyle,
+  name={}
+]{screen}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{screen}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%========================
+%% 赤枠
+%%========================
+\declaretheorem[
+  numbered=no,
+  style=redframestyle,
+  name={},
+]{redscreen}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{redscreen}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%========================
+%% （ただの枠）
+%%========================
+\declaretheorem[
+    %headindent = 0,
+    numbered=no,
+    style=framedstyle,
+    name={}
+]{justbox}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{justbox}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%==============================
+%% 　定理（チートシート用）
+%%==============================
+\declaretheorem[
+    numbered=no,
+    style=framedstyle,
+    name={Theorem}
+]{cheatsheetthm}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{cheatsheetthm}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+%%==============================
+%% 　命題（チートシート用）
+%%==============================
+\declaretheorem[
+    numbered=no,
+    style=framedstyle,
+    name={Proposition}
+]{cheatsheetprop}
+% 環境の開始時にフラグをtrueに設定
+\AtBeginEnvironment{cheatsheetprop}{
+  \AtThmEnvStarttrue
+  \everypar{\AtThmEnvStartfalse\everypar{}}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\defaultabovedisplayskip}
+\setlength{\defaultabovedisplayskip}{\abovedisplayskip}
+
+% align環境の開始時にフラグをチェックし、間隔を設定
+\BeforeBeginEnvironment{align}{%
+  \ifAtThmEnvStart
+    \setlength{\abovedisplayskip}{0pt}% 環境開始直後の場合、間隔を0ptに
+    \AtThmEnvStartfalse % フラグをfalseに（次の数式では通常の間隔を使用）
+  \else
+    \setlength{\abovedisplayskip}{\defaultabovedisplayskip}% それ以外の場合はデフォルト（例: 10pt）
+  \fi
+}
+
+% align* 環境の開始時にフラグをチェックし、間隔を設定
+\BeforeBeginEnvironment{align*}{%
+  \ifAtThmEnvStart
+    \setlength{\abovedisplayskip}{0pt}% 環境開始直後の場合、間隔を0ptに
+    \AtThmEnvStartfalse % フラグをfalseに（次の数式では通常の間隔を使用）
+  \else
+    \setlength{\abovedisplayskip}{\defaultabovedisplayskip}% それ以外の場合はデフォルト（例: 10pt）
+  \fi
+}
+
+% equation 環境の開始時にフラグをチェックし、間隔を設定
+\BeforeBeginEnvironment{equation}{%
+  \ifAtThmEnvStart
+    \setlength{\abovedisplayskip}{0pt}%
+    \AtThmEnvStartfalse
+  \else
+    \setlength{\abovedisplayskip}{\defaultabovedisplayskip}%
+  \fi
+}
+
+% equation*環境の開始時にフラグをチェックし、間隔を設定
+\BeforeBeginEnvironment{equation*}{%
+  \ifAtThmEnvStart
+    \setlength{\abovedisplayskip}{0pt}%
+    \AtThmEnvStartfalse
+  \else
+    \setlength{\abovedisplayskip}{\defaultabovedisplayskip}%
+  \fi
+}
+
+
+\RenewDocumentCommand{\emph}{m d()}{%
+  \IfValueTF{#2}{%
+    \textbf{#1}~(\textit{#2})%
+  }%
+  {%
+    \textbf{#1}%
+  }%
+}
+
+
+
