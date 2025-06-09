@@ -1,0 +1,51 @@
+{
+  "window.zoomLevel": 2,
+  "[cpp]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "chiehyu.vscode-astyle",
+  },
+  "C_Cpp.intelliSenseEngine": "default",
+  "C_Cpp.formatting": "clangFormat",
+  "C_Cpp.clang_format_fallbackStyle": "Google",
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.unicodeHighlight.allowedCharacters": {
+    "∨": true,
+    "：": true
+  },
+  //"editor.defaultFormatter": "esbenp.prettier-vscode",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.wordWrap": "on",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "markdown.marp.outlineExtension": false,
+  "editor.accessibilitySupport": "off",
+  "git.openRepositoryInParentFolders": "never",
+  "latex-utilities.message.update.show": false,
+  "git.suggestSmartCommit": false,
+  "security.allowedUNCHosts": [
+    "wsl.localhost"
+  ],
+  "files.autoGuessEncoding": true,
+  "latex.formatter.columnLimit": 0,
+  "workbench.settings.applyToAllProfiles": [
+    "latex.formatter.columnLimit"
+  ],
+  "makefile.configureOnOpen": true,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.formatOnType": true,
+  "tabnine.experimentalAutoImports": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "C_Cpp.files.exclude": {
+    "**/.vscode": true,
+    "**/.vs": true
+  },
+  "cpp-format.executable.linux": "clang-format",
+  //"editor.defaultFoldingRangeProvider": "jbenden.c-cpp-flylint",
+  "cpp-format.executable": "clang-format",
+}

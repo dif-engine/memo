@@ -1,0 +1,54 @@
+あなた:
+なるほど，ではタブで展開するようにしたいと思います．ところで，職場でChatGPTに聞いたときには，その機能はもう現在のvscodeから削除されたと言われました．なにか最近スニペットのインライン展開について動きがありましたか？
+
+
+ChatGPT:
+ChatGPT の新バージョンについてのフィードバックを送ります
+どちらの回答がお好みですか？回答の読み込みには時間がかかる場合があります。
+ChatGPT
+回答 1
+VS Code の最近の変更で「スニペット補完が完全に消えた」という話は誤解です。スニペットの**インライン展開（Tab で即挿入）**は今でも使えますが、挙動の調整方法が変わっているので、その点を押さえれば復活します。
+
+✅ 直近の挙動変化（参考）
+editor.tabCompletion（Tab 補完）は現在も存在し、挙動が改善されています 
+github.com
++9
+code.visualstudio.com
++9
+reddit.com
++9
+。
+
+ただし、VS Code 本体が Tab を「補完候補選択」や「インラインサジェスト受け入れ」に優先的に割り当てるようになっており、スニペット挙動の優先順位が変わったため、「展開せず候補がプルダウンされる」現象が起こりやすくなっています。
+
+※これが「削除された」と言われた原因の一つと思われます。
+
+✅ スニペットを Tab 一発で展開するには？
+1. 設定ファイル (settings.json) に以下を追加：
+json
+コピーする
+編集する
+{
+  "editor.tabCompletion": "on",
+  "editor.snippetSuggestions": "top"
+}
+tabCompletion: "on" → スニペットを Tab で即展開（候補リストが出ていても）。
+
+snippetSuggestions: "top" → IntelliSense の中でもスニペットを上位に表示 。
+
+2. Tab キーに割り当てを確認・調整
+VS Code の默认設定では、いくつかのコマンドが Tab に割当てられていることがあります。
+例えば、補完の確定 (acceptSelectedSuggestion) が Tab に割り当てられていると、スニペットではなくそちらが優先されることがあります。
+
+無効化する具体例（keybindings.json に記述）：
+json
+コピーする
+編集する
+[
+  {
+    "key": "tab",
+    "command": "-acceptSelectedSuggestion",
+    "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+  }
+]
+これにより、候補リストにフォーカスがあっても Tab で候補を確定しなくなり、スニペット展開が優先されやすくなります

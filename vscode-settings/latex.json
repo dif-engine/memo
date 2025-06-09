@@ -1,0 +1,423 @@
+{
+	"comment": {
+		"prefix" : "comment",
+		"body" : [
+			"\\\\begin{comment}",
+			"$1",
+			"\\\\end{comment}\n"
+		],
+		"description": "latex comment"
+	},
+
+	"mindflow": {
+		"prefix" : "mflow",
+		"body" : [
+			"\\\\begin{mindflow}",
+			"$1",
+			"\\\\end{mindflow}\n"
+		],
+		"description": "mindflow"
+	},
+
+  	"textbf": {
+		"prefix" : "bf",
+		"body" : [
+			"\\\\textbf{$1}$2"
+		],
+		"description" : "textbf"
+	},
+
+	"texttt": {
+		"prefix" : "tt",
+		"body" : [
+			"\\\\texttt{$1}$2"
+		],
+		"description": "texttt"
+	},
+
+	"textit": {
+		"prefix" : "it",
+		"body" : [
+			"\\\\textit{$1}$2"
+		],
+		"description": "textit"
+	},
+
+	"tikzpicture": {
+		"prefix" : "tikz",
+		"body" : [
+			"\\\\begin{tikzpicture}",
+			"$1",
+			"\\\\end{tikzpicture}"
+		],
+		"description": "tikzpicture"
+	},
+
+	"expression (tagless)": {
+		"prefix" : "ex",
+		"body" : ["\\$$1\\$"],
+		"description": "tagless expression"
+	},
+
+	"expression (tagless, displaystyle)": {
+		"prefix" : "exd",
+		"body" : ["\\$\\\\displaystyle $1\\$"],
+		"description": "tagless expression (display style)"
+	},
+
+	"note block": {
+		"prefix": "note",
+		"body": [
+			"\\\\begin{note}",
+			"$1",
+			"\\\\end{note}"
+		],
+		"description": "note block"
+	},
+
+	"caution block": {
+		"prefix": "caution",
+		"body": [
+			"\\\\begin{caution}",
+			"$1",
+			"\\\\end{caution}"
+		],
+		"description": "caution block"
+	},
+
+	"verbatim block": {
+		"prefix" : "verb",
+		"body" : [
+			"\\\\begin{verbatim}",
+			"$1",
+			"\\\\end{verbatim}"
+		],
+		"description": "verbatim block"
+	},
+
+	"memorandum block": {
+		"prefix": "memo",
+		"body": [
+			"\\\\begin{memorandum}",
+			"$1",
+			"\\\\end{memorandum}"
+		],
+		"description": "memorundum block"
+	},
+
+	"boxnote": {
+		"prefix": "boxnote",
+		"body": [
+			"\\\\begin{boxnote}",
+			"$1",
+			"\\\\end{boxnote}"
+		],
+		"description": "boxnote"
+	},
+
+	"align block": {
+		"prefix": "align",
+		"body": [
+			"\\\\begin{align}",
+			"&$1",
+			"\\\\end{align}$2"
+		],
+		"description": "align block"
+	},
+
+	"align block (locally leqnomode)": {
+		"prefix": "lalign",
+		"body": [
+			"\\\\leqnomode%",
+			"\\\\begin{align}",
+			"&$1",
+			"\\\\end{align}$2",
+			"\\\\reqnomode%"
+		],
+		"description": "align block (leqnomode)"
+	},
+
+	"align* block": {
+		"prefix": "alignstar",
+		"body": [
+			"\\\\begin{align*}",
+			"&$1",
+			"\\\\end{align*}$2"
+		],
+		"description": "align* block"
+	},
+
+	"align* block (locally leqnomode)": {
+		"prefix": "lalignstar",
+		"body": [
+			"\\\\leqnomode%",
+			"\\\\begin{align*}",
+			"&$1",
+			"\\\\end{align*}$2",
+			"\\\\reqnomode%"
+		],
+		"description": "align* block (leqnomode)"
+	},
+
+	"proof block": {
+		"prefix": "proof",
+		"body" : [
+			"\\\\begin{proof}",
+			"$1",
+			"\\\\end{proof}"
+		],
+		"description": "proof block"
+	},
+
+	"footnote": {
+		"prefix" : "foot",
+		"body" : [
+			"\\\\footnote{",
+			"$1",
+			"}$2"
+		],
+		"description": "footnote"
+	},
+
+	"left-right pair": {
+		"prefix" : "lr",
+		"body" : [
+			"\\\\left $1 \\\\right"
+		],
+		"description": "left-right pair"
+	},
+
+	"paren pair": {
+		"prefix" : "pn",
+		"body" : [
+			"\\\\left($1 \\\\right)"
+		],
+		"description": "paren pair"
+	},
+
+	"big pair": {
+		"prefix" : "big",
+		"body" : [
+			"\\\\bigl $1 \\\\bigr "
+		],
+		"description": "big pair"
+	},
+
+	"Big pair": {
+		"prefix" : "Big",
+		"body" : [
+			"\\\\Bigl $1 \\\\Bigr "
+		],
+		"description": "Big pair"
+	},
+
+	"bigg pair": {
+		"prefix" : "bigg",
+		"body" : [
+			"\\\\biggl $1 \\\\bigr "
+		],
+		"description": "bigg pair"
+	},
+
+	"Bigg pair" : {
+		"prefix" : "Bigg",
+		"body" : [
+			"\\\\Biggl $1 \\\\Biggr "
+		],
+		"description": "Bigg pair"
+	},
+
+	"brace pair" : {
+		"prefix" : "brace",
+		"body" : [
+			"\\\\lbrace $1 \\\\rbrace"
+		],
+		"description": "brace pair"
+	},
+
+	"angle pair" : {
+		"prefix" : "angle",
+		"body" : [
+			"\\\\langle $1 \\\\rangle"
+		],
+		"description": "angle pair"
+	},
+
+	"frac" : {
+		"prefix" : "frac",
+		"body" : [
+			"\\\\frac{$1}{$2}"
+		],
+		"description": "frac"
+	},
+
+	"excercise" : {
+		"prefix" : "exc",
+		"body" : [
+			"\\\\begin{excercise}",
+			"{$1}",
+			"\\\\end{excercise}",
+			"（{ヒント}：）"
+		],
+		"description": "excercise"
+	},
+
+	"theorem env": {
+		"prefix" : "theorem",
+		"body" : [
+			"\\\\begin{theorem}${1:[theorem name]}%",
+			"\\\\label{${2:label}}",
+			"$3",
+			"\\\\end{theorem}$4"
+		],
+		"description": "theorem env"
+	},
+
+	"proposition env": {
+		"prefix" : "prop",
+		"body" : [
+			"\\\\begin{prop}${1:[proposition name]}%",
+			"\\\\label{${2:label}}",
+			"$3",
+			"\\\\end{prop}$4"
+		],
+		"description": "proposition env"
+	},
+
+	"lemma env": {
+		"prefix" : "lemma",
+		"body" : [
+			"\\\\begin{lemma}${1:[lemma name]}%",
+			"\\\\label{${2:label}}",
+			"$3",
+			"\\\\end{lemma}$4"
+		],
+		"description": "lemma env"
+	},
+
+	"corollary env": {
+		"prefix" : "cor",
+		"body" : [
+			"\\\\begin{corollary}${1:[cor-name]}%",
+			"\\\\label{${2:label}}",
+			"$3",
+			"\\\\end{corollary}$4"
+		],
+		"description": "corollary env"
+	},
+
+
+	"example env": {
+		"prefix" : "example",
+		"body" : [
+			"\\\\begin{example}${1:[example name]}%",
+			"\\\\label{${2:label}}",
+			"$3",
+			"\\\\end{example}$4"
+		],
+		"description": "example env"
+	},
+
+	"definition env": {
+		"prefix" : "def",
+		"body" : [
+			"\\\\begin{definition}${1:[def name]}%",
+			"\\\\label{${2:label}}",
+			"$3",
+			"\\\\end{definition}$4"
+		],
+		"description": "definition env"
+	},
+
+	"notation env": {
+		"prefix" : "notation",
+		"body" : [
+			"\\\\begin{notation}${1:[notation name]}%",
+			"\\\\label{${2:label}}",
+			"$3",
+			"\\\\end{notation}$4"
+		],
+		"description": "notation env"
+	},
+
+	"itemize env": {
+		"prefix" : "item",
+		"body" : [
+			"\\\\begin{itemize}",
+			"\t\\\\item ${1:XXX}",
+			"\\\\end{itemize}$2"
+		],
+		"description": "itemize env"
+	},
+
+	"enumerate env": {
+		"prefix" : "enum",
+		"body" : [
+			"\\\\begin{enumerate}",
+			"\t\\\\item ${1:XXX}",
+			"\\\\end{enumerate}$2"
+		],
+		"description": "enumerate env"
+	},
+
+	"quote env": {
+		"prefix" : "quote",
+		"body" : [
+			"\\\\begin{quote}",
+			"$1",
+			"\\\\end{quote}"
+		],
+		"description": "quote env"
+	},
+
+	"start chapter": {
+		"prefix": "chapter",
+		"body" : [
+			"\\\\chapter{${1:chapter-name}}%",
+			"\\\\label{${2:chapter-label}}",
+			"$3"
+		],
+		"description": "start chapter"
+	},
+
+	"start section": {
+		"prefix": "section",
+		"body" : [
+			"\\\\section{${1:section-name}}%",
+			"\\\\label{${2:section-label}}",
+			"$3"
+		],
+		"description": "start section"
+	},
+
+	"start subsection": {
+		"prefix": "subsection",
+		"body" : [
+			"\\\\subsection{${1:subsection-name}}%",
+			"\\\\label{${2:subsection-label}}",
+			"$3"
+		],
+		"description": "start subsection"
+	},
+
+	"varepsilon": {
+		"prefix" : "e",
+		"body" : ["\\\\varepsilon"],
+		"description": "varepsilon"
+	},
+
+	"varphi": {
+		"prefix" : "phi",
+		"body" : ["\\\\varphi"],
+		"description": "varphi"
+	},
+
+	
+	"labeltext" : {
+		"prefix" : "label",
+		"body" : ["\\\\labeltext{$1}\\\\enskip"],
+		"description": "label text"
+	},
+
+	
+}
