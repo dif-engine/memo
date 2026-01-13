@@ -1,0 +1,706 @@
+\usepackage{comment}
+\usepackage{epigraph}
+\usepackage{makeidx}
+
+\usepackage{geometry} % to change the page dimensions
+%\usepackage[top=25truemm,bottom=50truemm]{geometry}
+
+
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+%\usepackage{amsmath}
+\usepackage[fleqn]{amsmath}
+
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage[svgnames]{xcolor}% tikzより前に読み込む必要あり
+\usepackage{tikz}
+\usepackage[most,listings]{tcolorbox} % for newtcbox
+\usepackage{latexsym}
+\usepackage{amsthm}
+\usepackage{lipsum}
+\usepackage{mathrsfs}
+\usepackage{mathtools, nccmath}
+\usepackage{xparse}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\usepackage{tablefootnote}
+\usepackage{textgreek}
+\usepackage{url}
+\usepackage{stackengine}
+\usepackage{graphicx}
+\usepackage{manfnt} %「曲がり道注意」フォント
+\usepackage{relsize} %for large math
+\usepackage{calc} %長さの計算のため
+\usepackage{romannum} %for roman numbers \romannum{1}, \Romannum{1}, for example
+\usepackage{tabularx}
+\usepackage{thmtools}
+\usepackage{minitoc}
+\usepackage{mindflow}
+\usepackage{etoolbox}
+\usepackage{unicode-math}
+%\setmathfont{TeX Gyre Termes Math}[
+%  UppercaseGreek=Italic,
+%  StylisticSet=2  % これで \mathcal が「従来風」に
+%]
+%\setmathfont{TeX Gyre Termes Math}[StylisticSet=1]
+%\setmathfont{XITS Math}
+
+
+\usepackage{unicode-math}
+%\unimathsetup{math-style=TeX}
+%\unimathsetup{math-style=ISO}
+\setmathfont{TeX Gyre Termes Math}[UppercaseGreek=Italic]
+
+\setmathfont{Latin Modern Math}[range=cal]
+
+%\usepackage{fontspec}
+%\usepackage[backend=biber,style=authoryear]{biblatex}
+\usepackage[backend=biber,style=numeric]{biblatex}
+\usepackage{ulem} % 下線を使いたい場合
+\addbibresource{nsa_bibliography.bib}
+%\usepackage{ntheorem}
+
+\usetikzlibrary{patterns, intersections, calc}
+
+\AtBeginDocument{\pagenumbering{arabic}} %ページ番号がローマ数字になるのを抑制する．
+%\mathtoolsset{showonlyrefs=true}
+
+% 引用環境を再定義
+\newmdenv[
+  leftline=true,          % 左の線だけ表示
+  topline=false,          % 上の線なし
+  bottomline=false,       % 下の線なし
+  rightline=false,        % 右の線なし
+  linecolor=gray,         % 線の色
+  linewidth=2pt,          % 線の太さ
+  innerleftmargin=10pt,   % 線と本文の間隔
+  innerrightmargin=0pt,   % 右マージン
+  innertopmargin=5pt,
+  innerbottommargin=5pt
+]{customquote}
+
+\renewenvironment{quote}
+  {\begin{customquote}\itshape}
+  {\end{customquote}}
+
+
+%環境
+\setlength\fboxsep{7pt}
+\setlength\fboxrule{0.7pt}
+
+
+
+\NewDocumentCommand{\paren}{s m}{%
+  \IfBooleanTF{#1}{%
+    \mathopen{} (#2)\mathclose{}%
+  }%
+  {%
+    \mathopen{}\left(#2 \right)\mathclose{}%
+  }%
+}
+
+\NewDocumentCommand{\sqbracepair}{s m}{%
+  \IfBooleanTF{#1}{%
+    \mathopen{} [#2]\mathclose{}%
+  }%
+  {%
+    \mathopen{}\left[#2 \right]\mathclose{}%
+  }%
+}
+
+\NewDocumentCommand{\anglepair}{s m}{%
+  \IfBooleanTF{#1}{%
+    \mathopen{} \langle #2\rangle\mathclose{}%
+  }%
+  {%
+    \mathopen{}\left\langle #2 \right\rangle\mathclose{}%
+  }%
+}
+
+\NewDocumentCommand{\apply}{s m m}{%
+  \IfBooleanTF{#1}{%
+    #2\paren*{#3}%
+  }%
+  {%
+    #2\paren{#3}
+  }%
+}
+
+\NewDocumentCommand{\mybrace}{s m}{%
+  \IfBooleanTF{#1}{%
+    \mathopen{} \{#2\}\mathclose{}%
+  }%
+  {%
+    \mathopen{}\left\lbrace{#2} \right\rbrace\mathclose{}%
+  }%
+}
+
+\NewDocumentCommand{\bigparen}{m}{%
+  \mathopen{}\bigl(#1 \bigr)\mathclose{}%
+}
+
+\NewDocumentCommand{\Bigparen}{m}{%
+  \mathopen{}\Bigl(#1 \Bigr)\mathclose{}%
+}
+
+\NewDocumentCommand{\biggparen}{m}{%
+  \mathopen{}\biggl(#1 \biggr)\mathclose{}%
+}
+
+\NewDocumentCommand{\Biggparen}{m}{%
+  \mathopen{}\Biggl(#1 \Biggr)\mathclose{}%
+}
+
+\NewDocumentCommand{\offsetFromleft}{m m}{%
+  {#2}\blacktriangleright{#1}
+}
+
+\NewDocumentCommand{\offsetFromRight}{m m}{%
+  {#1}\blacktriangleleft{#2}
+}
+
+
+%■人名
+\NewDocumentCommand{\PolishLos}{}{{\L}o{\'s}}
+\NewDocumentCommand{\Jaskowski}{}{Ja{\'s}kowski}
+\NewDocumentCommand{\PolishLukasiewicz}{}{{\L}ukasiewicz}
+\NewDocumentCommand{\Hrbacek}{}{Hrb{\'a}{\v{c}}ek}
+\NewDocumentCommand{\Frechet}{}{{Fr{\'e}chet}}
+
+
+\DeclareMathOperator{\dom}{dom} %圏論関係
+\DeclareMathOperator{\ran}{ran} %集合論関係
+\DeclareMathOperator{\trcl}{trcl} %集合論，推移閉包
+\DeclareMathOperator{\curry}{curry} %Haskell
+\DeclareMathOperator{\uncurry}{uncurry} %Haskell
+\DeclareMathOperator{\List}{List}
+%\newcommand*{\ListA}{\List_{\mathrm{A}}}
+%基礎集合
+%\newcommand{\nullset}{\varnothing}
+
+% 斜体ギリシア文字
+%\NewDocumentCommand{\itPhi}{}{\mathit{\Phi}}
+%\NewDocumentCommand{\itPsi}{}{\mathit{\Psi}}
+%\NewDocumentCommand{\itTheta}{}{\mathit{\Theta}}
+%\NewDocumentCommand{\itSigma}{}{\mathit{\Sigma}}
+
+\NewDocumentCommand{\pair}{m m}{\left\langle{#1},{#2}\right\rangle}
+\NewDocumentCommand{\triple}{m m m}{\left\langle{#1},\,{#2},\,{#3}\right\rangle}
+\NewDocumentCommand{\quadruple}{m m m m}{\left\langle{#1},\,{#2},\,{#3},\,{#4}\right\rangle}
+
+\NewDocumentCommand{\singleton}{m}{\left\lbrace{#1} \right\rbrace}
+\NewDocumentCommand{\upair}{m m}{\left\lbrace{#1},\,{#2}\right\rbrace}
+\NewDocumentCommand{\extensionalSetNotation}{m}{\left\lbrace{#1} \right\rbrace}
+
+
+\NewDocumentCommand{\triff}{}{\,\triangledown\,}
+\NewDocumentCommand{\shortiff}{}{\,\Leftrightarrow\,}
+\NewDocumentCommand{\shortimplies}{}{\,\Rightarrow\,}
+\NewDocumentCommand{\isomorphism}{}{\xrightarrow[\text{onto}]{\text{1--1}}}
+\NewDocumentCommand{\ontomap}{}{\xrightarrow{\text{onto}}}
+\NewDocumentCommand{\monomap}{}{\xrightarrow{\text{1--1}}}
+
+\NewDocumentCommand{\informula}{}{$\in$-論理式\ }
+\NewDocumentCommand{\instformula}{}{$\in$-$\STD$-論理式\ }
+
+
+%%%%% (maybe) generic math symbols
+\NewDocumentCommand{\Ker}{}{\operatorname{Ker}}
+\NewDocumentCommand{\Complex}{}{\mathbb{C}}
+\NewDocumentCommand{\Real}{}{\mathbb{R}}
+\NewDocumentCommand{\Rational}{}{\mathbb{Q}}
+\NewDocumentCommand{\Integer}{}{\mathbb{Z}}
+\NewDocumentCommand{\Natural}{}{\mathbb{N}}
+\NewDocumentCommand{\forany}{}{{}^\forall}
+\NewDocumentCommand{\forsome}{}{{}^\exists}
+\NewDocumentCommand{\True}{}{\top}
+\NewDocumentCommand{\False}{}{\bot}
+\NewDocumentCommand{\card}{}{\operatorname{card}}
+\NewDocumentCommand{\cardArg}{m}{\card\mathopen{}\left({#1} \right)\mathclose{}}
+
+
+\NewDocumentCommand{\Map}{}{\operatorname{Map}}
+\NewDocumentCommand{\Mapop}{m m}{\apply{\Map}{#1, #2}}
+
+\NewDocumentCommand{\FMap}{}{\operatorname{FMap}}
+\NewDocumentCommand{\FMapop}{m m}{\apply{\FMap}{#1, #2}}
+
+\NewDocumentCommand{\Fun}{}{\mathbf{Fun}}
+\NewDocumentCommand{\FFun}{}{\mathbf{FFun}}
+
+
+\NewDocumentCommand{\Mat}{}{\operatorname{Mat}}
+\NewDocumentCommand{\Seq}{}{\operatorname{Seq}}
+\NewDocumentCommand{\superstructure}{m}{\widehat{{#1}}}
+\NewDocumentCommand{\superS}{}{\superstructure{S}}
+
+
+\NewDocumentCommand{\starmap}{m}{\prescript{*}{}{#1}}
+
+\NewDocumentCommand{\hyperReal}{}{\starmap{\Real}}
+
+
+\NewDocumentCommand{\ul}{m}{\underline{#1}}
+
+
+%■重要なクラス
+
+\NewDocumentCommand{\Ord}{}{\mathbf{Ord}}
+\NewDocumentCommand{\NatInfty}{}{\Nat_{\infty}}
+\NewDocumentCommand{\RealLimited}{}{\Real_{\mathrm{limited}}}
+
+\RenewDocumentCommand{\bar}{m}{\,\overline{#1}\,}
+\NewDocumentCommand{\manyvar}{m}{\kern.11em\overline{#1}\kern.11em}
+
+\NewDocumentCommand{\Fin}{}{\mathrm{Fin}}
+
+
+
+
+
+
+\NewDocumentCommand\standarization{m m}{\prescript{\STD}{}{\set{#1}{#2}}}
+
+%\newcommand{\stpart}[1]{{}^\circ{#1}}
+\NewDocumentCommand\stpart{m}{{}^\circ{#1}}
+
+
+\NewDocumentCommand{\ZFC}{}{\textbf{ZFC}}
+\NewDocumentCommand{\IST}{}{\textbf{IST}}
+\NewDocumentCommand{\BST}{}{\textbf{BST}}
+\NewDocumentCommand{\RBST}{}{\textbf{RBST}}
+\NewDocumentCommand{\KST}{}{\textbf{KST}}
+\NewDocumentCommand{\HST}{}{\textbf{HST}}
+
+\makeatletter
+\newcommand{\leqnomode}{\tagsleft@true}
+\newcommand{\reqnomode}{\tagsleft@false}
+\makeatother
+
+
+%■議論■
+\NewDocumentCommand{\iffdef}{}{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily def}}}{\longleftrightarrow}}}
+
+\NewDocumentCommand{\lequiv}{}{\enskip\longleftrightarrow\enskip}
+
+%■集合論補助■
+%\NewDocumentCommand{\powerset}{m}{\mathcal{P}\mathopen{}\left({#1}\right)\mathclose{}}
+%\NewDocumentCommand{\powersetfin}{m}{\mathcal{P}_{\mathrm{Fin}}\mathopen{}\left({#1}\right)\mathclose{}}
+
+\NewDocumentCommand{\powerset}{m}{\apply{\mathcal{P}}{#1}}
+\NewDocumentCommand{\powersetfin}{m}{\apply{\mathcal{P}_{\mathrm{Fin}}}{#1}}
+
+
+%\newcommand{\powersetfin}[1]{\mathcal{P}_{\mathrm{Fin}}\mathopen{}\left({#1}\right)\mathclose{}}
+\NewDocumentCommand{\Nat}{}{\mathbb{N}}
+\NewDocumentCommand{\plusone}{m}{{#1} \cup\singleton{{#1}}}
+
+\NewDocumentCommand{\prednamestd}{}{\operatorname{st}}
+\NewDocumentCommand{\std}{m}{\apply{\prednamestd}{#1}}
+\NewDocumentCommand{\STD}{}{\mathbf{S}}
+\NewDocumentCommand{\relativeizationS}{m}{{#1}^{\STD}}
+
+\NewDocumentCommand{\metaquote}{m}{\text{"${#1}$"}}
+\NewDocumentCommand{\lparenitself}{}{(}
+\NewDocumentCommand{\rparenitself}{}{)}
+
+\NewDocumentCommand{\forallfin}{}{\forall^{\Fin}}
+\NewDocumentCommand{\existsfin}{}{\exists^{\Fin}}
+
+%------------------------------------------------
+\NewDocumentCommand{\forallst}{}{\forall^\STD}
+\NewDocumentCommand{\existsst}{}{\exists^\STD}
+\NewDocumentCommand{\existsstfin}{}{\exists^{\STD\,\Fin}}
+\NewDocumentCommand{\forallstfin}{}{\forall^{\STD\,\Fin}}
+%------------------------------------------------
+\NewDocumentCommand{\RelStd}{m}{\STD\sqbracepair*{#1}}
+%------------------------------------------------
+\NewDocumentCommand{\forallRelst}{m}{\forall^{\RelStd{#1}}}
+\NewDocumentCommand{\existsRelst}{m}{\exists^{\RelStd{#1}}}
+\NewDocumentCommand{\existsRelstfin}{m}{\exists^{\RelStd{#1}\,\Fin}}
+\NewDocumentCommand{\forallRelstfin}{m}{\forall^{\RelStd{#1}\,\Fin}}
+
+
+%------------------------------------------------
+\NewDocumentCommand{\WeakRelStd}{m}{\STD\anglepair*{#1}}
+%------------------------------------------------
+\NewDocumentCommand{\forallWeakRelst}{m}{\forall^{\weakRelStd{#1}}}
+\NewDocumentCommand{\existsWeakRelst}{m}{\exists^{\weakRelStd{#1}}}
+\NewDocumentCommand{\existsWeakRelstfin}{m}{\exists^{\weakRelStd{#1}\,\Fin}}
+\NewDocumentCommand{\forallWeakRelstfin}{m}{\forall^{\weakRelStd{#1}\,\Fin}}
+%---------------
+
+
+\NewDocumentCommand{\nullset}{}{\varnothing}
+\NewDocumentCommand{\TheUniverse}{}{\mathbf{V}}
+
+
+\NewDocumentCommand{\RealPlus}{}{\Real_{+}}
+
+
+\NewDocumentCommand{\hal}{}{\mathrm{hal}}
+\NewDocumentCommand{\gal}{}{\mathrm{gal}}
+
+\NewDocumentCommand{\ball}{}{\mathrm{Ball}}
+
+
+%集合マクロ
+\RenewDocumentCommand{\set}{m m}{\left\lbrace{#1}\:\,\vrule\:\,{#2}\right\rbrace}
+%\renewcommand{\set}[2]{\left\lbrace{#1}\:\,\vrule\:\,{#2}\right\rbrace}
+
+\newcommand*{\mat}[5]{\left[ {#1} \,\vrule\:\
+\begin{array}{ccccc}																%
+      {#2}  &\kern-.7em\colon &\kern-.7em 1  &\kern-.7em \downarrow &\kern-.7em {#4} \\ %
+      {#3}  &\kern-.7em\colon &\kern-.7em 1  &\kern-.7em \to        &\kern-.7em {#5}     %
+\end{array}
+ \right]}
+
+
+
+%%%定理カウンタ
+\newcounter{mycounter} % カウンタの宣言
+\setcounter{mycounter}{0} % カウンタの初期化
+\newcommand{\useMycounter}[1][]{\refstepcounter{mycounter}{#1}{\themycounter}\:}
+
+%%%定義カウンタ
+\newcounter{defcounter}
+\setcounter{defcounter}{0}
+\newcommand{\useDefcounter}[1][]{\refstepcounter{defcounter}{#1}{\thedefcounter}\:}
+
+
+
+\NewDocumentCommand{\bendwarning}{}{\raisebox{1.5ex}{\dbend}}%「曲道注意」を入れる．
+
+
+%%% xor 記号 %%%
+\NewDocumentCommand{\barbelow}{m}{\stackunder[1.2pt]{$#1$}{\rule{.8ex}{.075ex}}}
+\NewDocumentCommand{\xor}{}{\,\barbelow{\lor}\,}
+
+%%% concat %%%
+\NewDocumentCommand{\verysmallnegativespace}{}{\kern-0.16em}
+\NewDocumentCommand{\concat}{}{\verysmallnegativespace::\verysmallnegativespace}
+
+
+\newtcbox{\frameforimplication}{
+    on line, 
+    arc=2.1pt,
+    enhanced jigsaw,
+    opacityback = 0,
+    colframe = black,
+    %before upper={\rule[-3pt]{0pt}{10pt}},
+    before = {},
+    after = {},
+    boxrule=1pt,
+    boxsep=1.3pt,
+    left=3.5pt,
+    right=3.5pt,
+    top=2.6pt,
+    bottom=1.9pt
+}
+
+\newtcbox{\framedtext}{
+    on line, 
+    arc=2.1pt,
+    enhanced jigsaw,
+    opacityback = 0,
+    colframe = black,
+    %before upper={\rule[-3pt]{0pt}{10pt}},
+    before = {},
+    after = {},
+    boxrule=1pt,
+    boxsep=1.3pt,
+    left=3.5pt,
+    right=3.5pt,
+    top=0.3pt,
+    bottom=0.3pt
+}
+
+
+
+
+
+
+\NewDocumentCommand{\casesplit}{m}{\noindent\framedtext{{#1}}\quad}
+
+\NewDocumentCommand{\labeltext}{m}{\noindent\framedtext{{#1}}\quad}
+
+\NewDocumentCommand{\labeledarrow}{m}{\noindent\frameforimplication{#1}\enskip}
+
+\NewDocumentCommand{\labeledRightarrow}{}{\labeledarrow{$\Rightarrow$}}
+
+\NewDocumentCommand{\labeledLeftarrow}{}{\labeledarrow{$\Leftarrow$}}
+
+
+
+\NewDocumentCommand{\opK}{m m}{\operatorname{\mathsf{K}}\mathopen{}\left({#1},{#2} \right)\mathclose{}}
+
+
+\NewDocumentCommand{\AxBoundedness}{}{\textsf{Boundedness}}
+\NewDocumentCommand{\AxTransfer}{}{\textsf{Transfer}}
+\NewDocumentCommand{\AxStandarization}{}{\textsf{Standarization}}
+\NewDocumentCommand{\AxBoundedIdealization}{}{\textsf{Bounded Idealization}}
+\NewDocumentCommand{\AxIdealization}{}{\textsf{Idealization}}
+\NewDocumentCommand{\PropLocalIdealization}{}{\textsf{Local Idealization}}
+
+\NewDocumentCommand{\AxBbare}{}{\textsf{B}}
+\NewDocumentCommand{\AxTbare}{}{\textsf{T}}
+\NewDocumentCommand{\AxSbare}{}{\textsf{S}}
+\NewDocumentCommand{\AxBIbare}{}{\textsf{BI}}
+\NewDocumentCommand{\AxIbare}{}{\textsf{I}}
+
+\NewDocumentCommand{\AxB}{}{(\AxBbare)}
+\NewDocumentCommand{\AxT}{}{(\AxTbare)}
+\NewDocumentCommand{\AxS}{}{(\AxSbare)}
+\NewDocumentCommand{\AxBI}{}{(\AxBIbare)}
+\NewDocumentCommand{\AxI}{}{(\AxIbare)}
+
+\NewDocumentCommand{\PropLI}{}{\textsf{(LI)}}
+
+
+
+\makeatletter
+\renewcommand*{\thefootnote}{%
+  \arabic{footnote}%
+}
+\makeatother
+
+%■mdframed の問題を修正
+\makeatletter
+\AfterEndEnvironment{mdframed}{%
+ \tfn@tablefootnoteprintout%
+ \gdef\tfn@fnt{0}%
+}%
+\makeatother
+
+\setlength{\epigraphwidth}{0.85\linewidth}
+
+
+% proof環境のカスタマイズ
+\makeatletter
+\AtBeginDocument{%
+  \renewcommand\proofname{\textbf{証明}}% 証明ラベルを太字に
+  \let\oldproof\proof % 元のproof環境を保存
+  \renewcommand{\proof}[1][\proofname]{% proof環境を再定義
+    \par
+    \pushQED{\qed}%
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist
+    \item[\hskip\labelsep
+          \textbf{#1}]% カスタムタイトルも太字に
+    \ignorespaces
+  }
+}
+\makeatother
+
+\makeatletter%
+\let\@addpunct\@gobble%
+\makeatother%
+% ↑この設定によって\bf{証明}の後の「.」が落ちる。
+
+\mdfsetup{%
+   middlelinewidth=0.9pt,
+   roundcorner=4.3pt,
+   innertopmargin=1.5pt,
+   innerbottommargin=7.3pt, 
+}
+
+%%% 定理環境
+\declaretheoremstyle[
+  headfont=\normalfont\bfseries,
+  bodyfont=\normalfont,
+  headpunct={},
+  postheadspace=0.8em,
+  mdframed={},
+]{framedstyle}
+
+\newcommand{\thmstart}{\leavevmode\strut\par}
+
+%%========================
+%% 定義
+%%========================
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  name={定義}
+]{definition}
+
+
+%%========================
+%% 定理
+%%========================
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  name={定理}
+]{theorem}
+
+
+%%========================
+%% 命題
+%%========================
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  sibling=theorem,
+  name={命題}
+]{prop}
+
+
+%%========================
+%% 補題
+%%========================
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  sibling=theorem,
+  name={補題}
+]{lemma}
+
+
+%%========================
+%% 系
+%%========================
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  sibling=theorem,
+  name={系}
+]{corollary}
+
+
+%%========================
+%% 記法
+%%========================
+\declaretheorem[
+  numbered=no,
+  style=framedstyle,
+  name={記法}
+]{notation}
+
+
+%%========================
+%% ノート
+%%========================
+\declaretheorem[
+  numbered=no,
+  style=framedstyle,
+  name={ノート}
+]{note}
+
+
+%%========================
+%% 注意
+%%========================
+\declaretheorem[
+  numbered=no,
+  style=framedstyle,
+  name={注意}
+]{caution}
+
+%%========================
+%% 例
+%%========================
+%\mdfsetup{backgroundcolor=orange!20}
+\declaretheorem[
+  numberwithin=section,
+  style=framedstyle,
+  name={例}
+]{example}
+
+
+%%========================
+%% （ただの枠）
+%%========================
+\newmdenv[
+  middlelinewidth=0.9pt,
+  roundcorner=4.3pt,
+  innertopmargin=6.4pt,
+  innerbottommargin=6.4pt,
+  skipabove=9pt,
+  skipbelow=3.5pt
+]{screen}
+
+\newmdenv[
+  middlelinewidth=0.9pt,
+  roundcorner=4.3pt,
+  innertopmargin=-6.2pt,
+  innerbottommargin=6.4pt,
+  skipabove=9pt,
+  skipbelow=3.5pt
+]{single-math-screen}
+
+
+%%========================
+%% 赤枠
+%%========================
+\declaretheorem[
+  numbered=no,
+  style=redframestyle,
+  name={},
+]{redscreen}
+
+
+%emphasizestyle
+%== blanket argument
+\declaretheorem[
+  numbered=no,
+  style=emphasizestyle,
+  name={規約}
+]{convention}
+
+
+%%========================
+%% （ただの枠）
+%%========================
+\declaretheorem[
+    %headindent = 0,
+    numbered=no,
+    style=framedstyle,
+    name={}
+]{justbox}
+
+
+%%==============================
+%% 　定理（チートシート用）
+%%==============================
+\declaretheorem[
+    numbered=no,
+    style=framedstyle,
+    name={Theorem}
+]{cheatsheetthm}
+
+
+%%==============================
+%% 　命題（チートシート用）
+%%==============================
+\declaretheorem[
+    numbered=no,
+    style=framedstyle,
+    name={Proposition}
+]{cheatsheetprop}
+
+
+\RenewDocumentCommand{\emph}{m d()}{%
+  \IfValueTF{#2}{%
+    \textbf{#1}~(\textit{#2})%
+  }%
+  {%
+    \textbf{#1}%
+  }%
+}
+
+
+
+%文献名表示フック
+\renewrobustcmd*{\mkbibemph}[1]{\textit{#1}}
+%\DeclareFieldFormat[english]{title}{\mkbibemph{#1}} % 英語のときはイタリック
+%\DeclareFieldFormat[japanese]{title}{\textbf{#1}}   % 日本語のときは太字
+
+
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
