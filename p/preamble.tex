@@ -44,20 +44,19 @@
 \usepackage{mindflow}
 \usepackage{etoolbox}
 \usepackage{unicode-math}
-%\setmathfont{TeX Gyre Termes Math}[
-%  UppercaseGreek=Italic,
-%  StylisticSet=2  % これで \mathcal が「従来風」に
-%]
-%\setmathfont{TeX Gyre Termes Math}[StylisticSet=1]
-%\setmathfont{XITS Math}
 
+\unimathsetup{math-style=ISO} %% これはギリシア語大文字を斜体にしてくれる．
 
-\usepackage{unicode-math}
-%\unimathsetup{math-style=TeX}
-%\unimathsetup{math-style=ISO}
-\setmathfont{TeX Gyre Termes Math}[UppercaseGreek=Italic]
+\setmathfont{TeX Gyre Termes Math}[
+  UppercaseGreek=Italic
+]
 
-\setmathfont{Latin Modern Math}[range=cal]
+\setmathfont{KpMath}
+\setmathfont{KpMath}[
+    range = { scr, bfscr },
+    StylisticSet = 1
+  ]
+
 
 %\usepackage{fontspec}
 %\usepackage[backend=biber,style=authoryear]{biblatex}
